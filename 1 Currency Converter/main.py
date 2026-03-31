@@ -5,7 +5,7 @@ rates = [
     ["EUR", 90],
     ["INR", 1]
 ]
-
+ 
 def get_rate(currency, rates):
     for item in rates:
         if item[0] == currency:

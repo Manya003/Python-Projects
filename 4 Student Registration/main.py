@@ -41,11 +41,11 @@ def menu():
     print("\n" + "="*45)
     print("🎓 Student Registration System 🎓")
     print("="*45)
-    print("1️⃣ Register Student ➕")
-    print("2️⃣ View Students 👀")
-    print("3️⃣ Search Student 🔍")
-    print("4️⃣ Remove Student ❌")
-    print("5️⃣ Exit 🚪")
+    print("1️⃣ Register Student ")
+    print("2️⃣ View Students ")
+    print("3️⃣ Search Student ")
+    print("4️⃣ Remove Student ")
+    print("5️⃣ Exit ")
 
 
 # Register
