@@ -97,7 +97,7 @@ def update_contact(contacts):
                 return
 
             if new_name in contacts:
-                print("⚠️ This name already exists!")
+                print("This name already exists!")
             else:
                 contacts[new_name] = contacts[name]
                 del contacts[name]
