@@ -21,13 +21,13 @@ PLANS = {
 
 FESTIVALS = [
     # (festival_name, month, day_start, day_end, discount%)
-    ("🎆 New Year",           1,  1,   7,   20),
-    ("🌈 Holi",               3,  20,  28,  15),
-    ("🌙 Eid",                4,  1,   7,   15),   # approximate (shifts yearly)
-    ("🇮🇳 Independence Day", 8,  13,  17,  12),
-    ("🎉 Navratri",           10, 1,   12,  10),
-    ("🪔 Diwali",             10, 18,  30,  25),
-    ("🎄 Christmas & NYE",    12, 24,  31,  20),
+    ("New Year",           1,  1,   7,   20),
+    ("Holi",               3,  20,  28,  15),
+    ("Eid",                4,  1,   7,   15),   # approximate (shifts yearly)
+    ("Independence Day", 8,  13,  17,  12),
+    ("Navratri",           10, 1,   12,  10),
+    ("Diwali",             10, 18,  30,  25),
+    ("Christmas & NYE",    12, 24,  31,  20),
 ]
 
 
@@ -93,7 +93,7 @@ def print_divider(char="=", width=45):
 
 
 def show_plans():
-    print("\n📋 Available Membership Plans:")
+    print("\nAvailable Membership Plans:")
     print_divider("-", 45)
     for key, plan in PLANS.items():
         print(f"  {key}. {plan['name']:<12} — ₹{plan['price']} / {plan['months']} month(s)")
@@ -105,34 +105,34 @@ def show_plans():
 # ─────────────────────────────────────────────────────────────────────────────
 
 print("\n" + "="*45)
-print("🏋️  Welcome to POWER GYM Membership System 💪")
+print("Welcome to POWER GYM Membership System")
 print("="*45)
 
 # --- Member Name ---
-name = input("\n👤 Enter your name: ").strip()
+name = input("\nEnter your name: ").strip()
 if not name:
-    print("❌ Name cannot be empty.")
+    print("Name cannot be empty.")
     exit()
 
 # --- Check existing membership ---
 history = load_history(name)
 if history:
-    print(f"\n📂 Found existing record for '{name}':")
+    print(f"\nFound existing record for '{name}':")
     print(f"   {history}")
-    action = input("\n🔄 Do you want to RENEW your membership? (yes/no): ").lower().strip()
+    action = input("\n Do you want to RENEW your membership? (yes/no): ").lower().strip()
     is_renewal = action == "yes"
 else:
-    print(f"\n✅ New member detected. Registering '{name}'...")
+    print(f"\nNew member detected. Registering '{name}'...")
     is_renewal = False
 
 # --- Age ---
 try:
     age = int(input("Enter your age: "))
     if age < 0:
-        print("❌ Age cannot be negative.")
+        print("Age cannot be negative.")
         exit()
 except ValueError:
-    print("❌ Invalid age entered.")
+    print("Invalid age entered.")
     exit()
 
 # --- Marital Status ---
@@ -142,9 +142,9 @@ if married not in ("yes", "no"):
 
 # --- Plan Selection ---
 show_plans()
-plan_choice = input("📌 Choose a plan (1/2/3): ").strip()
+plan_choice = input("Choose a plan (1/2/3): ").strip()
 if plan_choice not in PLANS:
-    print("❌ Invalid plan choice.")
+    print("Invalid plan choice.")
     exit()
 
 selected_plan = PLANS[plan_choice]
@@ -181,31 +181,31 @@ save_membership(name, plan_name, start_date, end_date, final_price, festival_nam
 # ─────────────────────────────────────────────────────────────────────────────
 
 print("\n" + "="*45)
-print("🧾  MEMBERSHIP RECEIPT")
+print("MEMBERSHIP RECEIPT")
 print("="*45)
-print(f"  👤 Name           : {name}")
-print(f"  📋 Plan           : {plan_name} ({months} month(s))")
-print(f"  📅 Start Date     : {start_date}")
-print(f"  📅 End Date       : {end_date}")
+print(f"   Name           : {name}")
+print(f"   Plan           : {plan_name} ({months} month(s))")
+print(f"   Start Date     : {start_date}")
+print(f"   End Date       : {end_date}")
 print("-"*45)
-print(f"  💵 Base Price     : ₹{base_price:.2f}")
-print(f"  🎯 Member Discount: -{member_discount}%  ({member_label})")
+print(f"   Base Price     : ₹{base_price:.2f}")
+print(f"   Member Discount: -{member_discount}%  ({member_label})")
 
 if festival_name:
     print(f"  {festival_name} Offer : -{fest_discount}%")
 else:
-    print(f"  🎊 Festival Offer : None (no active festival)")
+    print(f"   Festival Offer : None (no active festival)")
 
 if is_renewal:
-    print(f"  🔄 Renewal Bonus  : -5%")
+    print(f"   Renewal Bonus  : -5%")
 
 print("-"*45)
-print(f"  💰 Final Price    : ₹{final_price:.2f}")
-print(f"  🏷️  Total Savings  : ₹{total_savings:.2f}")
+print(f"   Final Price    : ₹{final_price:.2f}")
+print(f"   Total Savings  : ₹{total_savings:.2f}")
 print("="*45)
 
 if is_renewal:
-    print("✅ Membership renewed successfully! Stay fit! 💪")
+    print("Membership renewed successfully! Stay fit!")
 else:
-    print("✅ Membership activated! Welcome to POWER GYM! 🎉")
+    print("Membership activated! Welcome to POWER GYM!")
 print("="*45)

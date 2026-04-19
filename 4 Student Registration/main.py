@@ -4,7 +4,7 @@ from datetime import datetime
 
 students = []
 MAX_SEATS = 100
-deadline = datetime(2026, 3, 25, 23, 59)
+deadline = datetime(2026, 4, 25, 23, 59)
 
 
 # Load data from file
@@ -39,30 +39,30 @@ def generate_id():
 # Menu
 def menu():
     print("\n" + "="*45)
-    print("🎓 Student Registration System 🎓")
+    print("Student Registration System")
     print("="*45)
-    print("1️⃣ Register Student ")
-    print("2️⃣ View Students ")
-    print("3️⃣ Search Student ")
-    print("4️⃣ Remove Student ")
-    print("5️⃣ Exit ")
+    print("1. Register Student ")
+    print("2. View Students ")
+    print("3. Search Student ")
+    print("4. Remove Student ")
+    print("5. Exit ")
 
 
 # Register
 def register_student():
     if datetime.now() > deadline:
-        print("⛔ Deadline passed!")
+        print("Deadline passed!")
         return
 
     if len(students) >= MAX_SEATS:
-        print("🚫 Seats full!")
+        print("Seats full!")
         return
 
-    name = input("👤 Enter name: ").strip()
-    course = input("📚 Enter course: ").upper().strip()
+    name = input("Enter name: ").strip()
+    course = input("Enter course: ").upper().strip()
 
     if course != "MCA":
-        print("❌ Only MCA allowed!")
+        print("Only MCA allowed!")
         return
 
     student = {
@@ -74,7 +74,7 @@ def register_student():
     students.append(student)
     save_data()
 
-    print(f"✅ Registered! Your ID: {student['id']} 🎉")
+    print(f"Registered! Your ID: {student['id']}")
 
 
 # View
@@ -82,9 +82,9 @@ def view_students():
     if not students:
         print("No students found!")
     else:
-        print("\n📋 Student List")
+        print("\nStudent List")
         for s in students:
-            print(f"🆔 {s['id']} | {s['name']} | {s['course']}")
+            print(f"{s['id']} | {s['name']} | {s['course']}")
 
 
 # Search
@@ -93,10 +93,10 @@ def search_student():
 
     for s in students:
         if s["id"] == sid:
-            print(f"✅ Found: {s['name']} ({s['course']})")
+            print(f"Found: {s['name']} ({s['course']})")
             return
 
-    print("❌ Student not found!")
+    print("Student not found!")
 
 
 # Remove
@@ -107,10 +107,10 @@ def remove_student():
         if s["id"] == sid:
             students.remove(s)
             save_data() 
-            print("✅ Student removed!")
+            print("Student removed!")
             return
  
-    print("❌ Student not found!")
+    print("Student not found!")
 
 
 # Main
@@ -118,7 +118,7 @@ load_data()
 
 while True:
     menu()
-    choice = input("👉 Enter choice: ")
+    choice = input("Enter choice: ")
 
     if choice == "1":
         register_student()
@@ -133,8 +133,8 @@ while True:
         remove_student()
 
     elif choice == "5":
-        print("👋 Exiting...")
+        print("Exiting...")
         break
 
     else:
-        print("❌ Invalid choice!")
+        print("Invalid choice!")

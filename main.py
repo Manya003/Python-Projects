@@ -56,3 +56,12 @@ print(marks)
 marks["chemistry"] = 97
 print(marks)
 
+
+student = {
+"name": "Manya",
+"age": 21
+}
+
+print(student.keys())
+print(student.values())
+print(student.items())

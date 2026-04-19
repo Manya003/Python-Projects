@@ -1,13 +1,13 @@
 # Contact Book
 
 def menu():
-    print("\n📒✨ --- Contact Book --- ✨📒")
-    print("1️⃣  Add Contact ")
-    print("2️⃣  Remove Contact ")
-    print("3️⃣  Update Contact ")
-    print("4️⃣  Display Contacts ")
-    print("5️⃣  Search Contact ")
-    print("6️⃣  Exit ")
+    print("\n--- Contact Book ---")
+    print("1. Add Contact ")
+    print("2. Remove Contact ")
+    print("3. Update Contact ")
+    print("4. Display Contacts ")
+    print("5. Search Contact ")
+    print("6. Exit ")
  
 contacts = {}
 
@@ -42,13 +42,13 @@ def add_contact(contacts):
     name = input("Enter name: ")
     
     if not is_valid_name(name):
-        print("❌ Name should be at most 15 characters!")
+        print("Name should be at most 15 characters!")
         return
 
     phone = input("Enter phone number: ")
 
     if not is_valid_phone(phone):
-        print("❌ Phone number must be exactly 10 digits!")
+        print("Phone number must be exactly 10 digits!")
         return
     
     if name in contacts:
@@ -56,7 +56,7 @@ def add_contact(contacts):
     else:
         contacts[name] = phone
         save_contacts()  
-        print("✅ Contact added successfully!")
+        print("Contact added successfully!")
 
     display_contacts(contacts)
 
@@ -64,7 +64,7 @@ def add_contact(contacts):
 def remove_contact(contacts):
     # Check if contacts dictionary is empty
     if not contacts:
-        print("❌ You cannot remove a contact because no contacts exist!")
+        print("You cannot remove a contact because no contacts exist!")
         return
 
     name = input("Enter name to remove: ")
@@ -72,9 +72,9 @@ def remove_contact(contacts):
     if name in contacts:
         del contacts[name]
         save_contacts()
-        print("✅ Contact removed!")
+        print("Contact removed!")
     else:
-        print("❌ Contact not found!")
+        print("Contact not found!")
 
     display_contacts(contacts) 
 
@@ -93,7 +93,7 @@ def update_contact(contacts):
             new_name = input("Enter new name: ")
 
             if not is_valid_name(new_name):
-                print("❌ Name should be at most 15 characters!")
+                print("Name should be at most 15 characters!")
                 return
 
             if new_name in contacts:
@@ -102,24 +102,24 @@ def update_contact(contacts):
                 contacts[new_name] = contacts[name]
                 del contacts[name]
                 save_contacts()
-                print("✅ Name updated successfully!")
+                print("Name updated successfully!")
 
         elif choice == "2":
             new_phone = input("Enter new phone number: ")
 
             if not is_valid_phone(new_phone):
-                print("❌ Phone must be exactly 10 digits!")
+                print("Phone must be exactly 10 digits!")
                 return
 
             contacts[name] = new_phone
             save_contacts() 
-            print("✅ Phone updated successfully!")
+            print("Phone updated successfully!")
 
         else:
-            print("❌ Invalid choice!")
+            print("Invalid choice!")
 
     else:
-        print("❌ Contact not found!")
+        print("Contact not found!")
     display_contacts(contacts)
 
 # Display Contacts
@@ -127,9 +127,9 @@ def display_contacts(contacts):
     if not contacts:
         print("No contacts found!")
     else:
-        print("\nYour Saved Contacts 👤✨")
+        print("\nYour Saved Contacts")
         for i, (name, phone) in enumerate(contacts.items(), start=1): 
-            print(f"{i}️⃣  {name} 📞 : {phone}")
+            print(f"{i}️ {name} : {phone}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -151,7 +151,7 @@ def binary_search_by_name(contacts, target):
 
         if mid_name_lower == target_lower:
             name = sorted_names[mid]
-            return [(name, contacts[name])]         # exact match ✅
+            return [(name, contacts[name])]         # exact match
         elif mid_name_lower < target_lower:
             low = mid + 1
         else:
@@ -177,17 +177,17 @@ def search_by_phone(contacts, phone):
 # Display search results
 def display_results(results):
     if not results:
-        print("❌ No contact found!")
+        print("No contact found!")
     else:
-        print("\n🔍 Search Result:")
+        print("\nSearch Result:")
         for name, phone in results:
-            print(f"  👤 {name}  📞 {phone}")
+            print(f"  {name}  {phone}")
 
 
 # Search Menu — lets user pick which algorithm to use
 def search_contact(contacts):
     if not contacts:
-        print("❌ No contacts exist to search!")
+        print("No contacts exist to search!")
         return
 
     print("\nSearch by:")
@@ -204,7 +204,7 @@ def search_contact(contacts):
         results = search_by_phone(contacts, phone)
         display_results(results)
     else:
-        print("❌ Invalid choice!")
+        print("Invalid choice!")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -228,9 +228,9 @@ while True:
     elif choice == "5":
         search_contact(contacts)
     elif choice == "6":
-        print("Exiting... 👋")
+        print("Exiting... ")
         break
     else:
-        print("❌ Invalid choice!")
+        print("Invalid choice!")
 
 
